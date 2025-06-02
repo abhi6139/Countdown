@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Countdown Surprise</title>
+  <link rel="icon" href="download.png" type="image/x-icon">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fff0f5, #f7c2bc);
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+
+    h2 {
+      font-size: 2.8rem;
+      color: #db2777;
+      margin-bottom: 2rem;
+    }
+
+    #countdown {
+      font-size: 2rem;
+      color: #e75480;
+      margin-top: 2rem;
+      background: #ffeef3;
+      padding: 2rem;
+      border-radius: 1rem;
+      display: inline-block;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .message {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background-color:  #25D366;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 9999px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    #countdown a {
+      color: #db2777;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <a href="https://wa.me/918889360408" class="message">Whatsapp</a>
+  <h2>🎉 Countdown to Your Special Surprise 🎉</h2>
+  <div id="countdown"></div>
+
+  <script>
+    // Set the target date and time
+    const targetDate = new Date("2025-06-10T00:00:00").getTime();
+
+    const countdown = document.getElementById("countdown");
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance <= 0) {
+        countdown.innerHTML = `
+        🎁 It's time now! <br><br> <a href="https://abhi6139.github.io/Birthday/">Click here</a>  to view your surprise!🎁
+        `;
+        clearInterval(interval);
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = `
+        <strong>${days}</strong> days
+        <strong>${hours}</strong> hours
+        <strong>${minutes}</strong> minutes
+        <strong>${seconds}</strong> seconds
+      `;
+    };
+
+    const interval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
